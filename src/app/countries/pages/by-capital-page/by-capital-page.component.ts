@@ -13,9 +13,15 @@ export class ByCapitalPageComponent {
 
   public countries: Country[] = [];
 
+  public isLoadind: boolean = false;
+
   searchByCapital(term: string): void {
+
+    this.isLoadind = true;
+
     this.countriesService.searchCapital(term).subscribe(countries => {
       this.countries = countries;
+      this.isLoadind = false;
     });
 
   }
